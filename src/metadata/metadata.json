@@ -1,0 +1,4962 @@
+{
+    "package": "DigitalOcean",
+    "tagline": "DigitalOcean API",
+    "description": "The DigitalOcean API allows you to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests. The endpoints are intuitive and powerful, allowing you to easily make calls to retrieve information or to execute actions.",
+    "image": "https:\/\/logo.clearbit.com\/digitalocean.com",
+    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-DigitalOcean-Package",
+    "keywords": [
+        "API"
+    ],
+    "accounts": {
+        "domain": "digitalocean.com",
+        "credentials": [
+            "accessToken"
+        ]
+    },
+    "blocks": [
+        {
+            "name": "getActionsList",
+            "description": "To list all of the actions that have been executed on the current account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleAction",
+            "description": "The result will be a JSON object with an action key.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "actionId",
+                    "type": "String",
+                    "info": "Action id",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getVolumesList",
+            "description": "To list all of the Block Storage volumes available on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "May be provided as query paramater in order to restrict results to volumes available in a specific region.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createVolume",
+            "description": "Create new volume",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "sizeGigabytes",
+                    "type": "String",
+                    "info": "The size of the Block Storage volume in GiB (1024^3).",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for the Block Storage volume. Must be lowercase and be composed only of numbers, letters and `-`, up to a limit of 64 characters.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "An optional free-form text field to describe a Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "An optional free-form text field to describe a Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The region where the Block Storage volume will be created. When setting a region, the value should be the slug identifier for the region. When you query a Block Storage volume, the entire region object will be returned. Should not be specified with a snapshot_id.",
+                    "required": false
+                },
+                {
+                    "name": "snapshotId",
+                    "type": "String",
+                    "info": "The unique identifier for the volume snapshot from which to create the volume. Should not be specified with a region_id.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleVolume",
+            "description": "Show information about a Block Storage volume",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getVolumeByName",
+            "description": "Retrieve information about a Block Storage volume by name.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for the Block Storage volume. Must be lowercase and be composed only of numbers, letters and `-`, up to a limit of 64 characters.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "May be provided as query paramater in order to restrict results to volumes available in a specific region.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getVolumeSnapshots",
+            "description": "Retrieve the snapshots that have been created from a volume",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createVolumeSnapshot",
+            "description": "Create a snapshot from a volume",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for the volume snapshot.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteVolume",
+            "description": "Delete single volume",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteVolumeByName",
+            "description": "Delete single volume by name",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for the Block Storage volume.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "attachVolumeToDroplet",
+            "description": "Attach a Block Storage volume to a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "This must be 'attach'",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "Number",
+                    "info": "The unique identifier for the Droplet the volume will be attached or detached from.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "Number",
+                    "info": "The slug identifier for the region the volume is located in.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "attachVolumeToDropletByName",
+            "description": "Attach a Block Storage volume to a Droplet using its name.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeName",
+                    "type": "String",
+                    "info": "The name of the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "This must be 'attach'",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "Number",
+                    "info": "The unique identifier for the Droplet the volume will be attached or detached from.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "Number",
+                    "info": "The slug identifier for the region the volume is located in.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeVolumeFromDroplet",
+            "description": "Detach a Block Storage volume from a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "This must be `detach`",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "Number",
+                    "info": "The unique identifier for the Droplet the volume will be attached or detached from.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "Number",
+                    "info": "The slug identifier for the region the volume is located in.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeVolumeFromDropletByName",
+            "description": "Detach a Block Storage volume from a Droplet using its name",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeName",
+                    "type": "String",
+                    "info": "The name of the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "This must be 'detach'",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "Number",
+                    "info": "The unique identifier for the Droplet the volume will be attached or detached from.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "Number",
+                    "info": "The slug identifier for the region the volume is located in.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "resizeVolume",
+            "description": "Resize a Block Storage volume.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "This must be `resize`",
+                    "required": true
+                },
+                {
+                    "name": "sizeGigabytes",
+                    "type": "Number",
+                    "info": "The new size of the Block Storage volume in GiB (1024^3).",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The slug identifier for the region the volume is located in.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getVolumeActions",
+            "description": "Retrieve all actions that have been executed on a volume.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleVolumeAction",
+            "description": "Retrieve the status of a volume action",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "volumeId",
+                    "type": "String",
+                    "info": "The unique identifier for the Block Storage volume.",
+                    "required": true
+                },
+                {
+                    "name": "actionId",
+                    "type": "String",
+                    "info": "A unique numeric ID that can be used to identify and reference an action.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createCertificate",
+            "description": "Upload a new SSL certificate",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A unique human-readable name referring to a certificate.",
+                    "required": true
+                },
+                {
+                    "name": "privateKey",
+                    "type": "String",
+                    "info": "A unique human-readable name referring to a certificate.",
+                    "required": true
+                },
+                {
+                    "name": "leafCertificate",
+                    "type": "String",
+                    "info": "The contents of a PEM-formatted public SSL certificate.",
+                    "required": true
+                },
+                {
+                    "name": "certificateChain",
+                    "type": "String",
+                    "info": "The full PEM-formatted trust chain between the certificate authority's certificate and your domain's SSL certificate.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleCertificate",
+            "description": "Show information about an existing certificate.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "certificateId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a certificate.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllCertificates",
+            "description": "List all of the certificates available on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteCertificate",
+            "description": "Delete a specific certificate.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "certificateId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a certificate.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDomains",
+            "description": "Retrieve a list of all of the domains in your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createDomain",
+            "description": "Create a new domain.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The domain name to add to the DigitalOcean DNS management interface. The name must be unique in DigitalOcean's DNS system. The request will fail if the name has already been taken.",
+                    "required": true
+                },
+                {
+                    "name": "ipAddress",
+                    "type": "String",
+                    "info": "This attribute contains the IP address you want the domain to point to.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleDomain",
+            "description": "Get details about a specific domain.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteDomain",
+            "description": "Delete a domain.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDomainRecords",
+            "description": "Get a listing of all records configured for a domain.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createDomainRecord",
+            "description": "Create an existing record.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "A",
+                        "MX",
+                        "CNAME",
+                        "etc"
+                    ],
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The host name, alias, or service being defined by the record.",
+                    "required": false
+                },
+                {
+                    "name": "data",
+                    "type": "String",
+                    "info": "Variable data depending on record type. See the [Domain Records]() section for more detail on each record type.",
+                    "required": false
+                },
+                {
+                    "name": "priority",
+                    "type": "String",
+                    "info": "The priority of the host (for SRV and MX records. null otherwise).",
+                    "required": false
+                },
+                {
+                    "name": "port",
+                    "type": "String",
+                    "info": "The port that the service is accessible on (for SRV records only. null otherwise).",
+                    "required": false
+                },
+                {
+                    "name": "ttl",
+                    "type": "Number",
+                    "info": "This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested. If not set, the default value is 1800.",
+                    "required": false
+                },
+                {
+                    "name": "weight",
+                    "type": "Number",
+                    "info": "The weight of records with the same priority (for SRV records only. null otherwise).",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleDomainRecord",
+            "description": "Retrieve a specific domain record.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "recordId",
+                    "type": "String",
+                    "info": "A unique identifier for each domain record.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateDomainRecord",
+            "description": "Update an existing record.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "recordId",
+                    "type": "String",
+                    "info": "A unique identifier for each domain record.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "A",
+                        "MX",
+                        "CNAME",
+                        "etc"
+                    ],
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The host name, alias, or service being defined by the record.",
+                    "required": false
+                },
+                {
+                    "name": "data",
+                    "type": "String",
+                    "info": "Variable data depending on record type. See the [Domain Records]() section for more detail on each record type.",
+                    "required": false
+                },
+                {
+                    "name": "priority",
+                    "type": "String",
+                    "info": "The priority of the host (for SRV and MX records. null otherwise).",
+                    "required": false
+                },
+                {
+                    "name": "port",
+                    "type": "String",
+                    "info": "The port that the service is accessible on (for SRV records only. null otherwise).",
+                    "required": false
+                },
+                {
+                    "name": "ttl",
+                    "type": "Number",
+                    "info": "This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested. If not set, the default value is 1800.",
+                    "required": false
+                },
+                {
+                    "name": "weight",
+                    "type": "Number",
+                    "info": "The weight of records with the same priority (for SRV records only. null otherwise).",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteDomainRecord",
+            "description": "Retrieve a specific domain record.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "domain",
+                    "type": "String",
+                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "required": true
+                },
+                {
+                    "name": "recordId",
+                    "type": "String",
+                    "info": "A unique identifier for each domain record.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createDroplet",
+            "description": "Create a new Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The human-readable string you wish to use when displaying the Droplet name. The name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. The name set during creation will also determine the hostname for the Droplet in its internal configuration.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The unique slug identifier for the region that you wish to deploy in.",
+                    "required": true
+                },
+                {
+                    "name": "size",
+                    "type": "String",
+                    "info": "The unique slug identifier for the size that you wish to select for this Droplet.",
+                    "required": true
+                },
+                {
+                    "name": "image",
+                    "type": "String",
+                    "info": "The image ID of a public or private image, or the unique slug identifier for a public image. This image will be the base image for your Droplet.",
+                    "required": true
+                },
+                {
+                    "name": "sshKeys",
+                    "type": "List",
+                    "info": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "SSH key id"
+                    }
+                },
+                {
+                    "name": "backups",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether automated backups should be enabled for the Droplet. Automated backups can only be enabled when the Droplet is created.",
+                    "required": false
+                },
+                {
+                    "name": "ipv6",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether IPv6 is enabled on the Droplet.",
+                    "required": false
+                },
+                {
+                    "name": "privateNetworking",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether private networking is enabled for the Droplet. Private networking is currently only available in certain regions.",
+                    "required": false
+                },
+                {
+                    "name": "userData",
+                    "type": "String",
+                    "info": "A string containing 'user data' which may be used to configure the Droplet on first boot, often a 'cloud-config' file or Bash script. It must be plain text and may not exceed 64 KiB in size.",
+                    "required": false
+                },
+                {
+                    "name": "monitoring",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether to install the DigitalOcean agent for monitoring.",
+                    "required": false
+                },
+                {
+                    "name": "volumes",
+                    "type": "List",
+                    "info": "A flat array including the unique string identifier for each Block Storage volume to be attached to the Droplet. At the moment a volume can only be attached to a single Droplet.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Volume id"
+                    }
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Tag id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createMultiplyDroplets",
+            "description": "Create a new Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "names",
+                    "type": "List",
+                    "info": "An array of human human-readable strings you wish to use when displaying the Droplet name. Each name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. Each name set during creation will also determine the hostname for the Droplet in its internal configuration.",
+                    "required": true,
+                    "structure": {
+                        "name": "name",
+                        "type": "String",
+                        "info": "Each name"
+                    }
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The unique slug identifier for the region that you wish to deploy in.",
+                    "required": true
+                },
+                {
+                    "name": "size",
+                    "type": "String",
+                    "info": "The unique slug identifier for the size that you wish to select for this Droplet.",
+                    "required": true
+                },
+                {
+                    "name": "image",
+                    "type": "String",
+                    "info": "The image ID of a public or private image, or the unique slug identifier for a public image. This image will be the base image for your Droplet.",
+                    "required": true
+                },
+                {
+                    "name": "sshKeys",
+                    "type": "List",
+                    "info": "An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "SSH key id"
+                    }
+                },
+                {
+                    "name": "backups",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether automated backups should be enabled for the Droplet. Automated backups can only be enabled when the Droplet is created.",
+                    "required": false
+                },
+                {
+                    "name": "ipv6",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether IPv6 is enabled on the Droplet.",
+                    "required": false
+                },
+                {
+                    "name": "privateNetworking",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether private networking is enabled for the Droplet. Private networking is currently only available in certain regions.",
+                    "required": false
+                },
+                {
+                    "name": "userData",
+                    "type": "String",
+                    "info": "A string containing 'user data' which may be used to configure the Droplet on first boot, often a 'cloud-config' file or Bash script. It must be plain text and may not exceed 64 KiB in size.",
+                    "required": false
+                },
+                {
+                    "name": "monitoring",
+                    "type": "Boolean",
+                    "info": "A boolean indicating whether to install the DigitalOcean agent for monitoring.",
+                    "required": false
+                },
+                {
+                    "name": "volumes",
+                    "type": "List",
+                    "info": "A flat array including the unique string identifier for each Block Storage volume to be attached to the Droplet. At the moment a volume can only be attached to a single Droplet.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Volume id"
+                    }
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Tag id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleDroplet",
+            "description": "Show an individual droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDroplets",
+            "description": "List all Droplets in your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDropletsByTag",
+            "description": "List Droplets by a tag.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "tagName",
+                    "type": "Sting",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAvailableKernels",
+            "description": "Retrieve a list of all kernels available to a Dropet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getKernelSnapshots",
+            "description": "Retrieve the snapshots that have been created from a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getKernelBackups",
+            "description": "Retrieve any backups associated with a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getKernelActions",
+            "description": "Retrieve any actions associated with a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteDroplet",
+            "description": "Delete a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteDropletByTag",
+            "description": "Delete Droplets by a tag.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "tagName",
+                    "type": "String",
+                    "info": "Tag of deleted droplet",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getDropletNeighbors",
+            "description": "Retrieve a list of Droplets that are running on the same physical server.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllNeighbors",
+            "description": "Retrieve a list of Droplets that are running on the same physical server.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "enableBackups",
+            "description": "Enable backups on an existing Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "enable_backups"
+                    ],
+                    "info": "Must be enable_backups",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "disableBackups",
+            "description": "Disable backups on an existing Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "disable_backups"
+                    ],
+                    "info": "Must be disable_backups",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "rebootDroplet",
+            "description": "Reboot a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "reboot"
+                    ],
+                    "info": "Must be reboot",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletPowerCycle",
+            "description": "Power off and then back on.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "power_cycle"
+                    ],
+                    "info": "Must be power_cycle",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletShutdown",
+            "description": "Shutdown a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "shutdown"
+                    ],
+                    "info": "Must be shutdown",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletPowerOff",
+            "description": "Power off a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "power_off"
+                    ],
+                    "info": "Must be power_off",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletRestore",
+            "description": "Restore a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "restore"
+                    ],
+                    "info": "Must be restore",
+                    "required": true
+                },
+                {
+                    "name": "image",
+                    "type": "String",
+                    "info": "An image slug or ID. This represents the image that the Droplet will use as a base.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletPasswordReset",
+            "description": "Reset the password for a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "password_reset"
+                    ],
+                    "info": "Must be password_reset",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "resizeDroplet",
+            "description": "Resize a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "resize"
+                    ],
+                    "info": "Must be resize",
+                    "required": true
+                },
+                {
+                    "name": "disk",
+                    "type": "Boolean",
+                    "info": "Whether to increase disk size.",
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "type": "String",
+                    "info": "The size slug that you want to resize to.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "rebuildDroplet",
+            "description": "Rebuild a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "rebuild"
+                    ],
+                    "info": "Must be rebuild",
+                    "required": true
+                },
+                {
+                    "name": "image",
+                    "type": "String",
+                    "info": "An image slug or ID. This represents the image that the Droplet will use as a base.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "renameDroplet",
+            "description": "Rename a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "rename"
+                    ],
+                    "info": "Must be rename",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The new name for the Droplet.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "changeDropletKernel",
+            "description": "Change the kernel of a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "change_kernel"
+                    ],
+                    "info": "Must be change_kernel",
+                    "required": true
+                },
+                {
+                    "name": "kernel",
+                    "type": "String",
+                    "info": "A unique number used to identify and reference a specific kernel.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "enableIPv6ToDroplet",
+            "description": "Enable IPv6 networking on an existing Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "enable_ipv6"
+                    ],
+                    "info": "Must be enable_ipv6",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "enablePrivateNetworkingToDroplet",
+            "description": "Enable private networking on an existing Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "enable_private_networking"
+                    ],
+                    "info": "Must be enable_private_networking",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "dropletSnapshot",
+            "description": "Snapshot a Droplet",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "snapshot"
+                    ],
+                    "info": "Must be snapshot",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The name to give the new snapshot.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "taggedDropletAction",
+            "description": "Some actions can be performed in bulk on tagged Droplets.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "power_cycle",
+                        "power_on",
+                        "power_off",
+                        "shutdown",
+                        "enable_private_networking",
+                        "enable_ipv6",
+                        "enable_backups",
+                        "disable_backups",
+                        "snapshot"
+                    ],
+                    "info": "Must be snapshot",
+                    "required": true
+                },
+                {
+                    "name": "tagName",
+                    "type": "String",
+                    "info": "The tag name.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getDropletAction",
+            "description": "Retrieve a Droplet action.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.",
+                    "required": true
+                },
+                {
+                    "name": "actionId",
+                    "type": "String",
+                    "info": "A unique identifier for each Droplet action event. This is used to reference a specific action that was requested.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getFloatingIps",
+            "description": "List all of the Floating IPs.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createFloatingIp",
+            "description": "On creation, a Floating IP must be either assigned to a Droplet or reserved to a region.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "dropletId",
+                    "type": "String",
+                    "info": "The ID of Droplet that the Floating IP will be assigned to.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createRegionFloatingIp",
+            "description": "On creation, a Floating IP must be either assigned to a Droplet or reserved to a region. ",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The slug identifier for the region the Floating IP will be reserved to.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleFloatingIp",
+            "description": "Show information about a Floating IP.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteFloatingIp",
+            "description": "Delete Floating IP.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "assignFloatingIpToDroplet",
+            "description": "Assign a Floating IP to a Droplet.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "assign"
+                    ],
+                    "info": "Must be: assign",
+                    "required": false
+                },
+                {
+                    "name": "dropletId",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "unassignFloatingIp",
+            "description": "Unassign a Floating IP.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "unassign"
+                    ],
+                    "info": "Must be: unassign",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllFloatingIpActions",
+            "description": "Retrieve all actions that have been executed on a Floating IP.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleFloatingIpAction",
+            "description": "Retrieve the status of a Floating IP action.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "floatingIp",
+                    "type": "String",
+                    "info": "Example: 45.55.96.47",
+                    "required": true
+                },
+                {
+                    "name": "actionId",
+                    "type": "String",
+                    "info": "A unique numeric ID that can be used to identify and reference an action.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createFirewall",
+            "description": "Create a new Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "inboundRules",
+                    "type": "JSON",
+                    "info": "An object specifying the inbound access rules for a Firewall (see example below).",
+                    "required": true
+                },
+                {
+                    "name": "outboundRules",
+                    "type": "JSON",
+                    "info": "An object specifying the outbound access rules for a Firewall (see table below).",
+                    "required": true
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Firewall.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id."
+                    }
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "An array containing the names of the Tags to be assigned to the Firewall..",
+                    "required": false,
+                    "structure": {
+                        "name": "tag",
+                        "type": "String",
+                        "info": "Tag value."
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleFirewall",
+            "description": "Show information about an existing Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllFirewalls",
+            "description": "List all of the Cloud Firewalls available on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateFirewall",
+            "description": "Update the configuration of an existing Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "inboundRules",
+                    "type": "JSON",
+                    "info": "An object specifying the inbound access rules for a Firewall (see example below).",
+                    "required": true
+                },
+                {
+                    "name": "outboundRules",
+                    "type": "JSON",
+                    "info": "An object specifying the outbound access rules for a Firewall (see table below).",
+                    "required": true
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Firewall.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id."
+                    }
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "An array containing the names of the Tags to be assigned to the Firewall..",
+                    "required": false,
+                    "structure": {
+                        "name": "tag",
+                        "type": "String",
+                        "info": "Tag value."
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteFirewall",
+            "description": "Delete a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "addDropletToFirewall",
+            "description": "Assign a Droplet to a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "droplets",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Firewall.",
+                    "required": true,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeDropletFromFirewall",
+            "description": "Assign a Droplet to a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "droplets",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Firewall.",
+                    "required": true,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "addTagsToFirewall",
+            "description": "Assign a Tag representing a group of Droplets to a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "An array containing the names of the Tags to be assigned to the Firewall.",
+                    "required": true,
+                    "structure": {
+                        "name": "tag",
+                        "type": "String",
+                        "info": "Tag value"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeTagsToFirewall",
+            "description": "Remove a Tag representing a group of Droplets to a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "tags",
+                    "type": "List",
+                    "info": "An array containing the names of the Tags to be assigned to the Firewall.",
+                    "required": true,
+                    "structure": {
+                        "name": "tag",
+                        "type": "String",
+                        "info": "Tag value"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "addRulesToFirewall",
+            "description": "Add additional access rules to a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "inboundRules",
+                    "type": "Array",
+                    "info": "Attribute containing an array of rules to be added..",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol."
+                        },
+                        {
+                            "name": "sources",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.)"
+                        }
+                    ]
+                },
+                {
+                    "name": "outboundRules",
+                    "type": "Array",
+                    "info": "Attribute containing an array of rules to be added..",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol."
+                        },
+                        {
+                            "name": "destinations",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.)"
+                        }
+                    ]
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeRulesToFirewall",
+            "description": "Remove access rules from a Cloud Firewall.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "firewallId",
+                    "type": "String",
+                    "info": "A unique ID that can be used to identify and reference a Firewall.",
+                    "required": true
+                },
+                {
+                    "name": "inboundRules",
+                    "type": "Array",
+                    "info": "Attribute containing an array of rules to be added..",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol."
+                        },
+                        {
+                            "name": "sources",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.)"
+                        }
+                    ]
+                },
+                {
+                    "name": "outboundRules",
+                    "type": "Array",
+                    "info": "Attribute containing an array of rules to be added..",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol."
+                        },
+                        {
+                            "name": "destinations",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.)"
+                        }
+                    ]
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllImages",
+            "description": "List all of the images available on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDistributionImages",
+            "description": "Retrieve only distribution images.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllApplicationImages",
+            "description": "Retrieve only application images.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllUserImages",
+            "description": "Retrieve only user images.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getImageActions",
+            "description": "Retrieve all actions that have been executed on an image.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleImage",
+            "description": "Retrieve information about an image (public or private).",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getImageBySlug",
+            "description": "Retrieve information about a public image.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "slug",
+                    "type": "String",
+                    "info": "A uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateImageName",
+            "description": "Retrieve information about a public image.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The new name that you would like to use for the image.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteImage",
+            "description": "Delete single image.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "transferImage",
+            "description": "Transfer an image to another region.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "transfer"
+                    ],
+                    "info": "Must be `transfer`",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The region slug that represents the region target.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "convertImageToSnapshot",
+            "description": "Convert an image, for example, a backup to a snapshot.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "Select",
+                    "options": [
+                        "convert"
+                    ],
+                    "info": "Must be convert",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getImageAction",
+            "description": "Retrieve the status of an image action.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "imageId",
+                    "type": "String",
+                    "info": "Image id",
+                    "required": true
+                },
+                {
+                    "name": "actionId",
+                    "type": "String",
+                    "info": "Action id",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createLoadBalancer",
+            "description": "Create a new Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for a Load Balancer instance.",
+                    "required": true
+                },
+                {
+                    "name": "algorithm",
+                    "type": "String",
+                    "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The region where the Load Balancer instance will be located. When setting a region, the value should be the slug identifier for the region. When you query a Load Balancer, an entire region object will be returned.",
+                    "required": true
+                },
+                {
+                    "name": "forwardingRules",
+                    "type": "Array",
+                    "info": "An array of objects specifying the forwarding rules for a Load Balancer. At least one forwarding rule is required when creating a new Load Balancer instance (see table below).",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "entry_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "entry_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on which the Load Balancer instance will listen.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.",
+                            "required": true
+                        },
+                        {
+                            "name": "certificate_id",
+                            "type": "String",
+                            "info": "The ID of the TLS certificate to be used for SSL termination.",
+                            "required": false
+                        },
+                        {
+                            "name": "tls_passthrough",
+                            "type": "Boolean",
+                            "info": "A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The defaults value is false.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "healthCheck",
+                    "type": "Array",
+                    "info": "An object specifying health check settings for the Load Balancer. If omitted, default values will be provided (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets on which the health check will attempt a connection.",
+                            "required": true
+                        },
+                        {
+                            "name": "path",
+                            "type": "String",
+                            "info": "The path on the backend Droplets to which the Load Balancer instance will send a request. The default value is `\/`.",
+                            "required": false
+                        },
+                        {
+                            "name": "check_interval_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.",
+                            "required": false
+                        },
+                        {
+                            "name": "response_timeout_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.",
+                            "required": false
+                        },
+                        {
+                            "name": "unhealthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must fail for a backend Droplet to be marked `unhealthy` and be removed from the pool. If not specified, the default value is `3`.",
+                            "required": false
+                        },
+                        {
+                            "name": "healthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must pass for a backend Droplet to be marked `healthy` and be re-added to the pool. If not specified, the default value is `5`.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "stickySessions",
+                    "type": "Array",
+                    "info": "An object specifying sticky sessions settings for the Load Balancer (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "type",
+                            "type": "Select",
+                            "options": [
+                                "cookies",
+                                "none"
+                            ],
+                            "info": "An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`."
+                        },
+                        {
+                            "name": "cookie_name",
+                            "type": "String",
+                            "info": "The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type."
+                        },
+                        {
+                            "name": "cookie_ttl_seconds",
+                            "type": "String",
+                            "info": "The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type."
+                        }
+                    ]
+                },
+                {
+                    "name": "redirectHttpToHttps",
+                    "type": "Boolean",
+                    "info": "A boolean value indicating whether HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443. Default value is false.",
+                    "required": false
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Load Balancer.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createLoadBalancerWithTag",
+            "description": "Create a new Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for a Load Balancer instance.",
+                    "required": true
+                },
+                {
+                    "name": "algorithm",
+                    "type": "String",
+                    "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The region where the Load Balancer instance will be located. When setting a region, the value should be the slug identifier for the region. When you query a Load Balancer, an entire region object will be returned.",
+                    "required": true
+                },
+                {
+                    "name": "forwardingRules",
+                    "type": "Array",
+                    "info": "An array of objects specifying the forwarding rules for a Load Balancer. At least one forwarding rule is required when creating a new Load Balancer instance (see table below).",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "entry_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "entry_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on which the Load Balancer instance will listen.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.",
+                            "required": true
+                        },
+                        {
+                            "name": "certificate_id",
+                            "type": "String",
+                            "info": "The ID of the TLS certificate to be used for SSL termination.",
+                            "required": false
+                        },
+                        {
+                            "name": "tls_passthrough",
+                            "type": "Boolean",
+                            "info": "A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The defaults value is false.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "healthCheck",
+                    "type": "Array",
+                    "info": "An object specifying health check settings for the Load Balancer. If omitted, default values will be provided (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets on which the health check will attempt a connection.",
+                            "required": true
+                        },
+                        {
+                            "name": "path",
+                            "type": "String",
+                            "info": "The path on the backend Droplets to which the Load Balancer instance will send a request. The default value is `\/`.",
+                            "required": false
+                        },
+                        {
+                            "name": "check_interval_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.",
+                            "required": false
+                        },
+                        {
+                            "name": "response_timeout_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.",
+                            "required": false
+                        },
+                        {
+                            "name": "unhealthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must fail for a backend Droplet to be marked `unhealthy` and be removed from the pool. If not specified, the default value is `3`.",
+                            "required": false
+                        },
+                        {
+                            "name": "healthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must pass for a backend Droplet to be marked `healthy` and be re-added to the pool. If not specified, the default value is `5`.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "stickySessions",
+                    "type": "Array",
+                    "info": "An object specifying sticky sessions settings for the Load Balancer (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "type",
+                            "type": "Select",
+                            "options": [
+                                "cookies",
+                                "none"
+                            ],
+                            "info": "An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`."
+                        },
+                        {
+                            "name": "cookie_name",
+                            "type": "String",
+                            "info": "The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type."
+                        },
+                        {
+                            "name": "cookie_ttl_seconds",
+                            "type": "String",
+                            "info": "The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type."
+                        }
+                    ]
+                },
+                {
+                    "name": "redirectHttpToHttps",
+                    "type": "Boolean",
+                    "info": "A boolean value indicating whether HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443. Default value is false.",
+                    "required": false
+                },
+                {
+                    "name": "tag",
+                    "type": "String",
+                    "info": "The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleBalancer",
+            "description": "Create a new Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllBalancers",
+            "description": "List all of the Load Balancer instances on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateLoadBalancer",
+            "description": "Update a Load Balancer's settings.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "A human-readable name for a Load Balancer instance.",
+                    "required": true
+                },
+                {
+                    "name": "algorithm",
+                    "type": "String",
+                    "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
+                    "required": true
+                },
+                {
+                    "name": "region",
+                    "type": "String",
+                    "info": "The region where the Load Balancer instance will be located. When setting a region, the value should be the slug identifier for the region. When you query a Load Balancer, an entire region object will be returned.",
+                    "required": true
+                },
+                {
+                    "name": "forwardingRules",
+                    "type": "Array",
+                    "info": "An array of objects specifying the forwarding rules for a Load Balancer. At least one forwarding rule is required when creating a new Load Balancer instance (see table below).",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "entry_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "entry_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on which the Load Balancer instance will listen.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_protocol",
+                            "type": "String",
+                            "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "target_port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.",
+                            "required": true
+                        },
+                        {
+                            "name": "certificate_id",
+                            "type": "String",
+                            "info": "The ID of the TLS certificate to be used for SSL termination.",
+                            "required": false
+                        },
+                        {
+                            "name": "tls_passthrough",
+                            "type": "Boolean",
+                            "info": "A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The defaults value is false.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "healthCheck",
+                    "type": "Array",
+                    "info": "An object specifying health check settings for the Load Balancer. If omitted, default values will be provided (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "String",
+                            "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "port",
+                            "type": "Number",
+                            "info": "An integer representing the port on the backend Droplets on which the health check will attempt a connection.",
+                            "required": true
+                        },
+                        {
+                            "name": "path",
+                            "type": "String",
+                            "info": "The path on the backend Droplets to which the Load Balancer instance will send a request. The default value is `\/`.",
+                            "required": false
+                        },
+                        {
+                            "name": "check_interval_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds between between two consecutive health checks. If not specified, the default value is `10`.",
+                            "required": false
+                        },
+                        {
+                            "name": "response_timeout_seconds",
+                            "type": "Number",
+                            "info": "The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.",
+                            "required": false
+                        },
+                        {
+                            "name": "unhealthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must fail for a backend Droplet to be marked `unhealthy` and be removed from the pool. If not specified, the default value is `3`.",
+                            "required": false
+                        },
+                        {
+                            "name": "healthy_threshold",
+                            "type": "Number",
+                            "info": "The number of times a health check must pass for a backend Droplet to be marked `healthy` and be re-added to the pool. If not specified, the default value is `5`.",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "name": "stickySessions",
+                    "type": "Array",
+                    "info": "An object specifying sticky sessions settings for the Load Balancer (see table below).",
+                    "required": false,
+                    "structure": [
+                        {
+                            "name": "type",
+                            "type": "Select",
+                            "options": [
+                                "cookies",
+                                "none"
+                            ],
+                            "info": "An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`."
+                        },
+                        {
+                            "name": "cookie_name",
+                            "type": "String",
+                            "info": "The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type."
+                        },
+                        {
+                            "name": "cookie_ttl_seconds",
+                            "type": "String",
+                            "info": "The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type."
+                        }
+                    ]
+                },
+                {
+                    "name": "redirectHttpToHttps",
+                    "type": "Boolean",
+                    "info": "A boolean value indicating whether HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443. Default value is false.",
+                    "required": false
+                },
+                {
+                    "name": "tag",
+                    "type": "String",
+                    "info": "The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.",
+                    "required": false
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Load Balancer.",
+                    "required": false,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteLoadBalancer",
+            "description": "Delete a Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "addDropletsToLoadBalancer",
+            "description": "Assign a Droplet to a Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Load Balancer instance..",
+                    "required": true,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeDropletsFromLoadBalancer",
+            "description": "Remove a Droplet from a Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                },
+                {
+                    "name": "dropletIds",
+                    "type": "List",
+                    "info": "An array containing the IDs of the Droplets to be assigned to the Load Balancer instance..",
+                    "required": true,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Droplet id"
+                    }
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "addForwardingRulesToLoadBalancer",
+            "description": "Add an additional forwarding rule to a Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                },
+                {
+                    "name": "entryProtocol",
+                    "type": "String",
+                    "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
+                    "required": true
+                },
+                {
+                    "name": "entryPort",
+                    "type": "Number",
+                    "info": "An integer representing the port on which the Load Balancer instance will listen.",
+                    "required": true
+                },
+                {
+                    "name": "targetProtocol",
+                    "type": "String",
+                    "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
+                    "required": true
+                },
+                {
+                    "name": "targetPort",
+                    "type": "Number",
+                    "info": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.",
+                    "required": true
+                },
+                {
+                    "name": "certificateId",
+                    "type": "String",
+                    "info": "The ID of the TLS certificate to be used for SSL termination.",
+                    "required": false
+                },
+                {
+                    "name": "tlsPassthrough",
+                    "type": "Boolean",
+                    "info": "A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The defaults value is false.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "removeForwardingRulesFromLoadBalancer",
+            "description": "Remove forwarding rules from a Load Balancer instance.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "balancerId",
+                    "type": "String",
+                    "info": "Balancer ID.",
+                    "required": true
+                },
+                {
+                    "name": "entryProtocol",
+                    "type": "String",
+                    "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
+                    "required": true
+                },
+                {
+                    "name": "entryPort",
+                    "type": "Number",
+                    "info": "An integer representing the port on which the Load Balancer instance will listen.",
+                    "required": true
+                },
+                {
+                    "name": "targetProtocol",
+                    "type": "String",
+                    "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
+                    "required": true
+                },
+                {
+                    "name": "targetPort",
+                    "type": "Number",
+                    "info": "An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.",
+                    "required": true
+                },
+                {
+                    "name": "certificateId",
+                    "type": "String",
+                    "info": "The ID of the TLS certificate to be used for SSL termination.",
+                    "required": false
+                },
+                {
+                    "name": "tlsPassthrough",
+                    "type": "Boolean",
+                    "info": "A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The defaults value is false.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllRegions",
+            "description": "List all of the regions that are available.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllSizes",
+            "description": "List all of the sizes that are available.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllSnapshots",
+            "description": "List all of the snapshots available on your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllDropletSnapshots",
+            "description": "Retrieve only snapshots based on Droplets.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllVolumeSnapshots",
+            "description": "Retrieve only snapshots based on volumes.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "Number",
+                    "info": "Page number",
+                    "required": false
+                },
+                {
+                    "name": "perPage",
+                    "type": "Number",
+                    "info": "Number of items you would like per page",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleSnapshot",
+            "description": "Retrieve information about a snapshot.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "snapshotId",
+                    "type": "String",
+                    "info": "The unique identifier for the snapshot.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteSingleSnapshot",
+            "description": "Delete a snapshot.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                },
+                {
+                    "name": "snapshotId",
+                    "type": "String",
+                    "info": "The unique identifier for the snapshot.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllSshKeys",
+            "description": "List all of the keys in your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createSshKey",
+            "description": "Add a new SSH public key to your DigitalOcean account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The name to give the new SSH key in your account.",
+                    "required": true
+                },
+                {
+                    "name": "publicKey",
+                    "type": "String",
+                    "info": "A string containing the entire public key.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleSshKey",
+            "description": "Add a new SSH public key to your DigitalOcean account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "id",
+                    "type": "String",
+                    "info": "This is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateSshKey",
+            "description": "Update the name of an SSH key.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "id",
+                    "type": "String",
+                    "info": "This is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "The name to give the new SSH key in your account.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteSshKey",
+            "description": "Destroy a public SSH key that you have in your account.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "id",
+                    "type": "String",
+                    "info": "This is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createTag",
+            "description": "Create new tag.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.",
+                    "required": true
+                },
+                {
+                    "name": "resources",
+                    "type": "JSON",
+                    "info": "An embedded object containing key value pairs of resource type and resource statistics.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleTag",
+            "description": "Retrieve an individual tag.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Tag name",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllTags",
+            "description": "List all of your tags.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "tagResource",
+            "description": "Resources can be tagged.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Tag name",
+                    "required": true
+                },
+                {
+                    "name": "resources",
+                    "type": "Array",
+                    "info": "An array of objects containing resource_id and resource_type attributes.",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "resource_id",
+                            "type": "String",
+                            "info": "The identifier of a resource."
+                        },
+                        {
+                            "name": "resource_type",
+                            "type": "String",
+                            "info": "The type of the resource."
+                        }
+                    ]
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "untagResource",
+            "description": "Resources can be untagged.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Tag name",
+                    "required": true
+                },
+                {
+                    "name": "resources",
+                    "type": "Array",
+                    "info": "An array of objects containing resource_id and resource_type attributes.",
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "resource_id",
+                            "type": "String",
+                            "info": "The identifier of a resource."
+                        },
+                        {
+                            "name": "resource_type",
+                            "type": "String",
+                            "info": "The type of the resource."
+                        }
+                    ]
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteTag",
+            "description": "A Tag can be deleted.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "Your Digital Ocean access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Tag name",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        }
+    ]
+}
