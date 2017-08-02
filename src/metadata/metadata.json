@@ -3155,8 +3155,10 @@
                     "structure": [
                         {
                             "name": "protocol",
-                            "type": "String",
-                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
                         },
                         {
                             "name": "ports",
@@ -3174,12 +3176,14 @@
                     "name": "outboundRules",
                     "type": "Array",
                     "info": "Attribute containing an array of rules to be added..",
-                    "required": false,
+                    "required": true,
                     "structure": [
                         {
                             "name": "protocol",
-                            "type": "String",
-                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.."
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
                         },
                         {
                             "name": "ports",

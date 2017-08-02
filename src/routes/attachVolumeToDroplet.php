@@ -33,7 +33,7 @@ $app->post('/api/DigitalOcean/attachVolumeToDroplet', function ($request, $respo
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
             if(empty($result['contextWrites']['to'])) {
-                $result['contextWrites']['to']['status_msg'] = "Api return no results";
+                    $result['contextWrites']['to']['status_msg'] = "Volume successfully attached!";
             }
         } else {
             $result['callback'] = 'error';
