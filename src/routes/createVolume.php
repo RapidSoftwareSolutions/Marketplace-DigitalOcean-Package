@@ -4,7 +4,7 @@ $app->post('/api/DigitalOcean/createVolume', function ($request, $response) {
 
     $settings = $this->settings;
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken','sizeGigabytes','name','description','description']);
+    $validateRes = $checkRequest->validate($request, ['accessToken','sizeGigabytes','name','description']);
 
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
@@ -12,7 +12,7 @@ $app->post('/api/DigitalOcean/createVolume', function ($request, $response) {
         $post_data = $validateRes;
     }
 
-    $requiredParams = ['accessToken'=>'accessToken','sizeGigabytes'=>'size_gigabytes','name'=>'name','description'=>'description','description'=>'description'];
+    $requiredParams = ['accessToken'=>'accessToken','sizeGigabytes'=>'size_gigabytes','name'=>'name','description'=>'description'];
     $optionalParams = ['region'=>'region','snapshotId'=>'snapshot_id'];
     $bodyParams = ['size_gigabytes','name','description','region','snapshot_id'];
 

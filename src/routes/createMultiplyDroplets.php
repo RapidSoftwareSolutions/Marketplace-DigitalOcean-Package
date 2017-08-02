@@ -14,13 +14,13 @@ $app->post('/api/DigitalOcean/createMultiplyDroplets', function ($request, $resp
 
     $requiredParams = ['accessToken'=>'accessToken','names'=>'names','region'=>'region','size'=>'size','image'=>'image'];
     $optionalParams = ['sshKeys'=>'ssh_keys','backups'=>'backups','ipv6'=>'ipv6','privateNetworking'=>'private_networking','userData'=>'user_data','monitoring'=>'monitoring','volumes'=>'volumes','tags'=>'tags'];
-    $bodyParams = ['name','region','size','image','ssh_keys','backups','ipv6','private_networking','user_data','monitoring','volumes','tags'];
+    $bodyParams = ['names','region','size','image','ssh_keys','backups','ipv6','private_networking','user_data','monitoring','volumes','tags'];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
     $requestBody = \Models\Params::createRequestBody($data, $bodyParams);
 
     $client = $this->httpClient;
-    $query_str = "https://api.digitalocean.com/v2/domains/{$data['domain']}/droplets";
+    $query_str = "https://api.digitalocean.com/v2/droplets";
 
     $requestParams['headers'] = ['Authorization' => 'Bearer ' . $data['accessToken']];
     $requestParams['json'] = $requestBody;

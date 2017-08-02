@@ -133,16 +133,10 @@
                     "required": true
                 },
                 {
-                    "name": "description",
-                    "type": "String",
-                    "info": "An optional free-form text field to describe a Block Storage volume.",
-                    "required": true
-                },
-                {
                     "name": "region",
                     "type": "String",
                     "info": "The region where the Block Storage volume will be created. When setting a region, the value should be the slug identifier for the region. When you query a Block Storage volume, the entire region object will be returned. Should not be specified with a snapshot_id.",
-                    "required": false
+                    "required": true
                 },
                 {
                     "name": "snapshotId",
@@ -677,7 +671,7 @@
                 {
                     "name": "privateKey",
                     "type": "String",
-                    "info": "A unique human-readable name referring to a certificate.",
+                    "info": "The contents of a PEM-formatted private-key corresponding to the SSL certificate.",
                     "required": true
                 },
                 {
@@ -947,7 +941,7 @@
                         "CNAME",
                         "etc"
                     ],
-                    "info": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.",
+                    "info": "The record type (A, MX, CNAME, etc).",
                     "required": true
                 },
                 {
@@ -2553,7 +2547,7 @@
                 {
                     "name": "dropletId",
                     "type": "Number",
-                    "info": "Number of items you would like per page",
+                    "info": "Droplet id",
                     "required": false
                 }
             ],
@@ -2685,15 +2679,57 @@
                 },
                 {
                     "name": "inboundRules",
-                    "type": "JSON",
+                    "type": "Array",
                     "info": "An object specifying the inbound access rules for a Firewall (see example below).",
-                    "required": true
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol.",
+                            "required": true
+                        },
+                        {
+                            "name": "sources",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.).",
+                            "required": true
+                        }
+                    ]
                 },
                 {
                     "name": "outboundRules",
-                    "type": "JSON",
+                    "type": "Array",
                     "info": "An object specifying the outbound access rules for a Firewall (see table below).",
-                    "required": true
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol.",
+                            "required": true
+                        },
+                        {
+                            "name": "destinations",
+                            "type": "JSON",
+                            "info": "An object specifying locations to which outbound traffic that will be allowed. (See below for the available keys and the types.).",
+                            "required": true
+                        }
+                    ]
                 },
                 {
                     "name": "dropletIds",

@@ -6,8 +6,9 @@ The DigitalOcean API allows you to manage Droplets and resources within the Digi
 * Credentials: accessToken
 
 ## How to get credentials: 
-0. Item one 
-1. Item two
+1. Sign in [cloud.digitalocean.com](https://cloud.digitalocean.com).
+2. Navigate to [Apps & API](https://cloud.digitalocean.com/settings/applications).
+3. Click: ```Generate New Token```
  
 ## DigitalOcean.getActionsList
 To list all of the actions that have been executed on the current account.
@@ -635,7 +636,7 @@ Assign a Floating IP to a Droplet.
 | accessToken| credentials| Your Digital Ocean access token
 | floatingIp | String     | Example: 45.55.96.47
 | type       | Select     | Must be: assign
-| dropletId  | Number     | Number of items you would like per page
+| dropletId  | Number     | Droplet id
 
 ## DigitalOcean.unassignFloatingIp
 Unassign a Floating IP.
