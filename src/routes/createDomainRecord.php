@@ -14,6 +14,24 @@ $app->post('/api/DigitalOcean/createDomainRecord', function ($request, $response
 
     $requiredParams = ['accessToken'=>'accessToken','domain'=>'domain','type'=>'type'];
     $optionalParams = ['name'=>'name','data'=>'data','priority'=>'priority','port'=>'port','ttl'=>'ttl','weight'=>'weight'];
+
+    $paramsDependence = [
+      "type" => [
+          "A" => "name,data",
+          "AAAA" => "name,data",
+          "CNAME" => "name,data",
+          "MX" => "data,priority",
+          "TXT" => "name,data",
+          "NS" => "data",
+          "SRV" => "name,data,priority,port,weight"
+      ]
+    ];
+
+    $checkDependence = \Models\Params::checkDependencies($post_data['args'], $paramsDependence);
+    if($checkDependence['callback'] != "success"){
+        return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($checkDependence);
+    }
+
     $bodyParams = ['type','name','data','priority','port','ttl','weight'];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);

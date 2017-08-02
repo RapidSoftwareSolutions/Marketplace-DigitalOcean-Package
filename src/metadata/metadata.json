@@ -366,8 +366,9 @@
                 },
                 {
                     "name": "type",
-                    "type": "String",
-                    "info": "This must be 'attach'",
+                    "type": "Select",
+                    "options": ["attach"],
+                    "info": "This must be `attach`",
                     "required": true
                 },
                 {
@@ -638,7 +639,7 @@
                     "name": "actionId",
                     "type": "String",
                     "info": "A unique numeric ID that can be used to identify and reference an action.",
-                    "required": false
+                    "required": true
                 }
             ],
             "callbacks": [
@@ -937,11 +938,14 @@
                     "type": "Select",
                     "options": [
                         "A",
-                        "MX",
+                        "AAAA",
                         "CNAME",
-                        "etc"
+                        "MX",
+                        "TXT",
+                        "NS",
+                        "SRV"
                     ],
-                    "info": "The record type (A, MX, CNAME, etc).",
+                    "info": "The record type (A, MX, CNAME, AAAA, TXT, NS, SRV).",
                     "required": true
                 },
                 {

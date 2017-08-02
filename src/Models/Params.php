@@ -43,4 +43,36 @@ class Params
         }
         return $requestBody;
     }
+
+    public static function checkDependencies($requestParams, $paramsDependence){
+        $result = [];
+        $missingField = [];
+        foreach ($paramsDependence as $param=>$value){
+            $paramVal = $requestParams[$param];
+            if(isset($paramsDependence[$param][$paramVal])){
+                $dependencies = explode(",",$paramsDependence[$param][$paramVal]);
+                foreach ($dependencies as $item){
+                    if(!isset($requestParams[$item])){
+                        $missingField[] = $item;
+                    }
+                }
+            } else {
+                $result['callback'] = 'error';
+                $result['contextWrites']['to']['status_code'] = "REQUIRED_FIELDS";
+                $result['contextWrites']['to']['status_msg'] = "Invalid field value.";
+                $result['contextWrites']['to']['fields'] = $param;
+            }
+        }
+
+        if(!empty($missingField)){
+            $result['callback'] = 'error';
+            $result['contextWrites']['to']['status_code'] = "REQUIRED_FIELDS";
+            $result['contextWrites']['to']['status_msg'] = "Please, check and fill in required fields.";
+            $result['contextWrites']['to']['fields'] = implode(",",$missingField);
+        } else {
+            $result['callback'] = 'success';
+        }
+
+        return $result;
+    }
 }
