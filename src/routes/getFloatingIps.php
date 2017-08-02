@@ -14,7 +14,7 @@ $app->post('/api/DigitalOcean/getFloatingIps', function ($request, $response) {
 
     $requiredParams = ['accessToken'=>'accessToken'];
     $optionalParams = ['page'=>'page','perPage'=>'per_page'];
-    $bodyParams = ['page','perPage'];
+    $bodyParams = ['page','per_page'];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
     $requestBody = \Models\Params::createRequestBody($data, $bodyParams);

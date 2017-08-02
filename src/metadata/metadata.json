@@ -985,6 +985,21 @@
                     "required": false
                 }
             ],
+            "paramsDependencies":[
+            {
+              "type":
+              {
+                  "A": "name,data",
+                  "AAAA": "name,data",
+                  "CNAME": "name,data",
+                  "MX": "data,priority",
+                  "TXT": "name,data",
+                  "NS": "data",
+                  "SRV": "name,data,priority,port,weight"
+              }
+            }
+
+            ],
             "callbacks": [
                 {
                     "name": "error",
@@ -2846,15 +2861,57 @@
                 },
                 {
                     "name": "inboundRules",
-                    "type": "JSON",
+                    "type": "Array",
                     "info": "An object specifying the inbound access rules for a Firewall (see example below).",
-                    "required": true
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol.",
+                            "required": true
+                        },
+                        {
+                            "name": "sources",
+                            "type": "JSON",
+                            "info": "An object specifying locations from which inbound traffic will be accepted. (See below for the available keys and the types.).",
+                            "required": true
+                        }
+                    ]
                 },
                 {
                     "name": "outboundRules",
-                    "type": "JSON",
+                    "type": "Array",
                     "info": "An object specifying the outbound access rules for a Firewall (see table below).",
-                    "required": true
+                    "required": true,
+                    "structure": [
+                        {
+                            "name": "protocol",
+                            "type": "Select",
+                            "options": ["tcp","udp","icmp"],
+                            "info": "The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`.",
+                            "required": true
+                        },
+                        {
+                            "name": "ports",
+                            "type": "String",
+                            "info": "The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. `8000-9000`), or `all` to open all ports for a protocol.",
+                            "required": true
+                        },
+                        {
+                            "name": "destinations",
+                            "type": "JSON",
+                            "info": "An object specifying locations to which outbound traffic that will be allowed. (See below for the available keys and the types.).",
+                            "required": true
+                        }
+                    ]
                 },
                 {
                     "name": "dropletIds",
