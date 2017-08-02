@@ -1174,13 +1174,13 @@
                 {
                     "name": "size",
                     "type": "String",
-                    "info": "The unique slug identifier for the size that you wish to select for this Droplet.",
+                    "info": "The unique slug identifier for the size that you wish to select for this Droplet. Example: 512mb",
                     "required": true
                 },
                 {
                     "name": "image",
                     "type": "String",
-                    "info": "The image ID of a public or private image, or the unique slug identifier for a public image. This image will be the base image for your Droplet.",
+                    "info": "The image ID of a public or private image, or the unique slug identifier for a public image. This image will be the base image for your Droplet. Example: ubuntu-14-04-x64",
                     "required": true
                 },
                 {
@@ -1448,7 +1448,7 @@
                     "name": "tagName",
                     "type": "Sting",
                     "info": "Page number",
-                    "required": false
+                    "required": true
                 },
                 {
                     "name": "page",
