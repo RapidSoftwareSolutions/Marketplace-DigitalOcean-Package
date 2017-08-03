@@ -132,7 +132,7 @@
                     "name": "description",
                     "type": "String",
                     "info": "An optional free-form text field to describe a Block Storage volume.",
-                    "required": true
+                    "required": false
                 },
                 {
                     "name": "region",
@@ -1462,7 +1462,7 @@
                 },
                 {
                     "name": "tagName",
-                    "type": "Sting",
+                    "type": "String",
                     "info": "Page number",
                     "required": true
                 },
