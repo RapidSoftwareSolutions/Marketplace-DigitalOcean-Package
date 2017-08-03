@@ -4,7 +4,7 @@ $app->post('/api/DigitalOcean/updateLoadBalancer', function ($request, $response
 
     $settings = $this->settings;
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken','name','algorithm','region','forwardingRules']);
+    $validateRes = $checkRequest->validate($request, ['accessToken','name','region','forwardingRules']);
 
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
@@ -12,8 +12,8 @@ $app->post('/api/DigitalOcean/updateLoadBalancer', function ($request, $response
         $post_data = $validateRes;
     }
 
-    $requiredParams = ['accessToken'=>'accessToken','name'=>'name','algorithm'=>'algorithm','region'=>'region','forwardingRules'=>'forwarding_rules'];
-    $optionalParams = ['healthCheck'=>'health_check','stickySessions'=>'sticky_sessions','redirectHttpToHttps'=>'redirect_http_to_https','tag'=>'tag','dropletIds'=>'droplet_ids'];
+    $requiredParams = ['accessToken'=>'accessToken','name'=>'name','region'=>'region','forwardingRules'=>'forwarding_rules'];
+    $optionalParams = ['healthCheck'=>'health_check','stickySessions'=>'sticky_sessions','redirectHttpToHttps'=>'redirect_http_to_https','tag'=>'tag','dropletIds'=>'droplet_ids','algorithm'=>'algorithm'];
     $bodyParams = ['name','algorithm','region','forwarding_rules','health_check','sticky_sessions','redirect_http_to_https','droplet_ids','tag'];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
@@ -26,7 +26,7 @@ $app->post('/api/DigitalOcean/updateLoadBalancer', function ($request, $response
     $requestParams['json'] = $requestBody;
 
     try {
-        $resp = $client->post($query_str, $requestParams);
+        $resp = $client->put($query_str, $requestParams);
         $responseBody = $resp->getBody()->getContents();
 
         if(in_array($resp->getStatusCode(), ['200', '201', '202', '203', '204'])) {

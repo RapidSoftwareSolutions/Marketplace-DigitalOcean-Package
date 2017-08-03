@@ -10,7 +10,9 @@
     "accounts": {
         "domain": "digitalocean.com",
         "credentials": [
-            "accessToken"
+            "accessToken",
+            "cloud",
+            "storage"
         ]
     },
     "blocks": [
@@ -987,8 +989,7 @@
             ],
             "paramsDependencies":[
             {
-              "type":
-              {
+              "type":{
                   "A": "name,data",
                   "AAAA": "name,data",
                   "CNAME": "name,data",
@@ -3711,7 +3712,7 @@
                     "name": "algorithm",
                     "type": "String",
                     "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
-                    "required": true
+                    "required": false
                 },
                 {
                     "name": "region",
@@ -3727,7 +3728,8 @@
                     "structure": [
                         {
                             "name": "entry_protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
                             "required": true
                         },
@@ -3739,7 +3741,8 @@
                         },
                         {
                             "name": "target_protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
                             "required": true
                         },
@@ -3771,7 +3774,8 @@
                     "structure": [
                         {
                             "name": "protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
                             "required": true
                         },
@@ -3889,7 +3893,7 @@
                     "name": "algorithm",
                     "type": "String",
                     "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
-                    "required": true
+                    "required": false
                 },
                 {
                     "name": "region",
@@ -3905,7 +3909,8 @@
                     "structure": [
                         {
                             "name": "entry_protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, or `tcp`.",
                             "required": true
                         },
@@ -3917,7 +3922,8 @@
                         },
                         {
                             "name": "target_protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
                             "required": true
                         },
@@ -3949,7 +3955,8 @@
                     "structure": [
                         {
                             "name": "protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
                             "required": true
                         },
@@ -4112,7 +4119,7 @@
                     "name": "algorithm",
                     "type": "String",
                     "info": "The load balancing algorithm used to determine which backend Droplet will be selected by a client. It must be either `round_robin` or `least_connections`. The default value is `round_robin`.",
-                    "required": true
+                    "required": false
                 },
                 {
                     "name": "region",
@@ -4134,13 +4141,15 @@
                         },
                         {
                             "name": "entry_port",
-                            "type": "Number",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "An integer representing the port on which the Load Balancer instance will listen.",
                             "required": true
                         },
                         {
                             "name": "target_protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, or `tcp`.",
                             "required": true
                         },
@@ -4172,7 +4181,8 @@
                     "structure": [
                         {
                             "name": "protocol",
-                            "type": "String",
+                            "type": "Select",
+                            "options": ["http","https","tcp"],
                             "info": "The protocol used for health checks sent to the backend Droplets. The possible values are `http` or `tcp`.",
                             "required": true
                         },

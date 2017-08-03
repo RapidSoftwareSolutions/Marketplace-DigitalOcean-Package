@@ -4,7 +4,7 @@ $app->post('/api/DigitalOcean/createLoadBalancerWithTag', function ($request, $r
 
     $settings = $this->settings;
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken','name','algorithm','region','forwardingRules']);
+    $validateRes = $checkRequest->validate($request, ['accessToken','name','region','forwardingRules']);
 
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
@@ -12,8 +12,8 @@ $app->post('/api/DigitalOcean/createLoadBalancerWithTag', function ($request, $r
         $post_data = $validateRes;
     }
 
-    $requiredParams = ['accessToken'=>'accessToken','name'=>'name','algorithm'=>'algorithm','region'=>'region','forwardingRules'=>'forwarding_rules'];
-    $optionalParams = ['healthCheck'=>'health_check','stickySessions'=>'sticky_sessions','redirectHttpToHttps'=>'redirect_http_to_https','tag'=>'tag'];
+    $requiredParams = ['accessToken'=>'accessToken','name'=>'name','region'=>'region','forwardingRules'=>'forwarding_rules'];
+    $optionalParams = ['healthCheck'=>'health_check','stickySessions'=>'sticky_sessions','redirectHttpToHttps'=>'redirect_http_to_https','tag'=>'tag','algorithm'=>'algorithm'];
     $bodyParams = ['name','algorithm','region','forwarding_rules','health_check','sticky_sessions','redirect_http_to_https','tag'];
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
