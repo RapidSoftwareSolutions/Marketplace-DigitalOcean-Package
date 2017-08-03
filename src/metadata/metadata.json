@@ -553,7 +553,8 @@
                 },
                 {
                     "name": "type",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["resize"],
                     "info": "This must be `resize`",
                     "required": true
                 },

@@ -33,7 +33,7 @@ $app->post('/api/DigitalOcean/disableBackups', function ($request, $response) {
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
             if(empty($result['contextWrites']['to'])) {
-                $result['contextWrites']['to']['status_msg'] = "Api return no results";
+                $result['contextWrites']['to']['status_msg'] = "Backups successfully disabled!";
             }
         } else {
             $result['callback'] = 'error';
